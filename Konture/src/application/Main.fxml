@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
+   <children>
+      <VBox prefHeight="530.0" prefWidth="800.0">
+         <children>
+            <SplitPane dividerPositions="0.4949874686716792" prefHeight="450.0" prefWidth="800.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <ImageView fx:id="originalImage" fitHeight="443.0" fitWidth="800.0" layoutX="-1.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="342.0" prefWidth="305.0">
+                     <children>
+                        <ImageView fx:id="newImage" fitHeight="443.0" fitWidth="800.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
+            <HBox prefHeight="65.0" prefWidth="800.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#browseImage" text="Browse Image">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#takeImage" text="Take image">
+                     <HBox.margin>
+                        <Insets left="20.0" top="10.0" />
+                     </HBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox layoutX="801.0" prefHeight="600.0" prefWidth="399.0">
+         <children>
+            <ImageView fx:id="maskImage" fitHeight="450.0" fitWidth="398.0" pickOnBounds="true" preserveRatio="true" />
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <VBox prefHeight="134.0" prefWidth="214.0">
+                     <children>
+                        <ComboBox fx:id="options_operation" editable="true" prefHeight="26.0" prefWidth="201.0" promptText="Choose an operation">
+                           <VBox.margin>
+                              <Insets top="27.0" />
+                           </VBox.margin>
+			               <items>
+			               	<FXCollections fx:factory="observableArrayList">
+			               		<String fx:value="Erosion" />
+			               		<String fx:value="Dilation" />
+			               		<String fx:value="Opening" />
+			               		<String fx:value="Closing" />
+			               		<String fx:value="Gradient" />
+			               		<String fx:value="TopHat" />
+			               		<String fx:value="BlackHat" />
+			               	</FXCollections>
+			               </items>
+                        </ComboBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#applyMorph" text="OK" />
+                              <Button mnemonicParsing="false" onAction="#resetMat" text="Reset">
+                                 <HBox.margin>
+                                    <Insets left="15.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="134.0" prefWidth="187.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Shape">
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Text>
+                        <ComboBox fx:id="options_shape" prefWidth="150.0" promptText="Select shape..">
+			               <items>
+			               	<FXCollections fx:factory="observableArrayList">
+			               		<String fx:value="Rectangle" />
+			               		<String fx:value="Ellipse" />
+			               		<String fx:value="Cross" />
+			               	</FXCollections>
+			               </items>
+                        </ComboBox>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Size">
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Text>
+                        <TextField fx:id="txt_size" maxWidth="-Infinity" prefHeight="26.0" prefWidth="110.0" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</Pane>
